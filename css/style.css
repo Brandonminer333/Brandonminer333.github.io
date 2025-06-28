@@ -23,14 +23,14 @@ html, body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 15vw;
+  width: 10vw;
   min-width: 100px;
   height: 100vh;
   background-color: #22311d;
 }
 
 .container {
-  margin-left: 15vw;
+  margin-left: 10vw;
   margin-top: 60px;
   padding: 1rem;
 }
@@ -38,6 +38,13 @@ html, body {
 /* Content Area */
 .content {
   background-color: #22311d;
+  padding: 1rem;
+  min-height: calc(100vh - 60px);
+}
+
+main.content {
+  margin-left: max(10vw, 100px);
+  margin-top: 60px;
   padding: 1rem;
   min-height: calc(100vh - 60px);
 }

@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brandon's Webpage</title>
-  <link rel="stylesheet" href="../css/style.css" />
-</head>
-<body>
-  <header class="header">
-    <div>
-      <nav>
-        <a href="brandonm333@outlook.com" target="_blank">contact: brandonm333@outlook.com</a>
-        <a href="https://www.linkedin.com/in/brandon-miner-3x3/" target="_blank">LinkedIn</a>
-        <a href="https://github.com/Branflakes333" target="_blank">GitHub</a>
-      </nav>
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brandon's Webpage</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  
+  <body>
 
-  <div class="container">
-    <aside class="sidebar">
-      <nav class="nav-links">
-        <div><a href="./pages/index.html" rel="noopener noreferrer">Home</a></div>
-        <div><a href="./pages/resume.html" rel="noopener noreferrer">Resume</a></div>
-        <div><a href="./pages/about.html" rel="noopener noreferrer">About</a></div>
-      </nav>
-    </aside>
+    <div id="header"></div>
+    <div id="sidebar"></div>
+    <div>
+      <script>
+        // Load header
+        fetch("/includes/header.html")
+          .then(response => response.text())
+          .then(data => document.getElementById("header").innerHTML = data);
+
+        // Load sidebar
+        fetch("/includes/sidebar.html")
+          .then(response => response.text())
+          .then(data => document.getElementById("sidebar").innerHTML = data);
+      </script>
+    </div>
 
     <main class="content">
-      <p>Hello World</p>
+      <div>
+        <h2>Welcome to my homepage</h2>
+        <p>This is the main content.</p>
+      </div>
     </main>
-  </div>
-
-</body>
+    
+  </body>
 </html>

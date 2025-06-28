@@ -1,78 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brandon's Webpage</title>
-  <link rel="stylesheet" href="../css/style.css" />
-</head>
-<body>
-  <header class="header">
-    <div>
-      <nav>
-        <a href="brandonm333@outlook.com" target="_blank">contact: brandonm333@outlook.com</a>
-        <a href="https://www.linkedin.com/in/brandon-miner-3x3/" target="_blank">LinkedIn</a>
-        <a href="https://github.com/Branflakes333" target="_blank">GitHub</a>
-      </nav>
-    </div>
-  </header>
 
-  <div class="container">
-    <aside class="sidebar">
-      <nav class="nav-links">
-        <div><a href="./index.html">Home</a></div>
-        <div><a href="./resume.html">Resume</a></div>
-        <div><a href="./about.html">About</a></div>
-      </nav>
-    </aside>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brandon's Webpage</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
 
+  <body>
+    <div id="header"></div>
+    <div id="sidebar"></div>
+    <script>
+      // Load header
+      fetch("/includes/header.html")
+        .then(response => response.text())
+        .then(data => document.getElementById("header").innerHTML = data);
+      // Load sidebar
+      fetch("/includes/sidebar.html")
+        .then(response => response.text())
+        .then(data => document.getElementById("sidebar").innerHTML = data);
+    </script>
+      
     <main class="content">
       <div>
-    <h1>Brandon Miner</h1>
-    <h4>San Diego, CA 92115</h4>
-    <h4>+1 (408) 335-5436 • brandonm333@outlook.com • http://www.linkedin.com/in/brandon-miner-3x3</h4>
-</div>
+        <h1 style="text-align: center;">Brandon Miner</h1>
+        <h4 style="text-align: center;">San Diego, CA 92115</h4>
+        <h4 style="text-align: center;"><a href="mailto:brandonm333@outlook.com">brandonm333@outlook.com</a> • <a href="http://www.linkedin.com/in/brandon-miner-3x3">linkedin.com/in/brandon-miner-3x3</a></h4>
+      </div>
+      <div><hr></div>
+      <div>
+        <div>
+          <h3>EDUCATION</h3>
+          <h4>UNIVERSITY OF SAN FRANCISCO</h4>
+          <p>Masters in Data Science</p>
+          <br>
+          <h4>SAN DIEGO STATE UNIVERSITY</h4>
+          <p>Bachelor of Science: Statistics- Emphasis in Data Science, Minor in Mathematics </p> 	
+          <br>
+          <h4>DE ANZA COLLEGE</h4>
+        </div>
+        <div><hr></div>
+        <div>
 
-<h3>EDUCATION</h3>
-<h4>UNIVERSITY OF SAN FRANCISCO</h4>
-<p>Masters in Data Science</p>
-<h4>SAN DIEGO STATE UNIVERSITY</h4>
-<p>Bachelor of Science: Statistics- Emphasis in Data Science, Minor in Mathematics </p> 	
-<h4>DE ANZA COLLEGE</h4>
-
-<h3>PROFESSIONAL EXPERIENCE</h3>
-<div><h4>SAN DIEGO TAXPAYER EDUCATIONAL FOUNDATION</h4></div>
-<div>San Diego, CA</div>
-<h5>Data Analytics & Inferential Statistics  Co-Lead Intern	March 2024-May 2025</h5>
-<p>Lead the 2024 Q3 Homelessness Program analysis, managing a team of 4+ interns to generate insights from program and expenditure data, leveraging statistical analysis and data visualization techniques while maintaining a streamlined, accessible GitHub repository
-Facilitated communication between interns and managers to promote a collaborative, growth-focused environment that prioritizes continuous learning,  effective data management, and timely deliverable completion.</p>
-<h4>SDSU CATERING	San Diego, CA</h4>
-<h5>Crew Lead		September 2022-June 2025</h5>
-
-Organize event materials and associates on behalf of management to streamline operations and reduce teardown time, boosting event efficiency and ensuring smooth workflow management.
-Trained and mentored 5 new associates, supporting smooth onboarding and job flow.
-Maintain strong communication by acting as an intermediary between management, associates, and customers to ensure seamless event execution and team collaboration to the customers’ satisfaction.
-<h3>PROJECTS</h3>
-
-<h4>CREDIT CARD FRAUD DETECTION</h4>
-
-Analyzed a dataset of over 250,000 credit card transactions to develop a predictive model for detecting fraud, utilizing unsupervised machine learning and predictive modeling techniques.
-Conducted preliminary statistical analysis and applied logistic regression to enhance model precision, achieving a false negative rate of less than 2% while maintaining an accuracy of over 90%.
-Developed adaptive backend Python code, called from a well-organized and presented Jupyter Notebook, allowing adjustments to accuracy, runtime, and false negative thresholds to meet user interests and needs.
-<h4>MEASURING EFFECTIVENESS OF SAN DIEGO COUNTY HOMELESSNESS PROGRAMS</h4>
-<p>Analyzed datasets comprising program expenditures and annual point-in-time counts of homelessness; standardized data to address bias and enhance model accuracy.
-Utilized mixed-effects modeling to account for city-specific variations, such as economic conditions.
-Identified “rapid rehousing” and “flexible funds” as the most effective homelessness intervention programs.
-Conducted residual analysis and addressed multicollinearity to improve model reliability, removing collinear predictors to refine outcomes.
-Produced actionable insights for optimizing resource allocation, contributing to regional strategies for reducing unsheltered homelessness in San Diego County which hold the potential to be extrapolated to other counties.</p>
-
-<h4>THE BURDEN OF PUBLIC WAGES ON SAN DIEGO COUNTY TAXPAYERS</h4>
-<p>Implemented iterative web scraping algorithms and natural language processing techniques to ensure data accuracy, including standardizing: names, job titles, and addressing confounding factors such as school enrollment.
-Conducted multivariate regression analyses and independent t-tests to explore wage dynamics, revealing a significant correlation between staff turnover and wage increases in police departments and school districts.
-Identified a 19.73% wage increase for police officers following a 1% staff reduction and a 7.9% wage increase for teachers switching districts, highlighting the financial burden of turnover on taxpayers.</p>
+        </div>
+        <h3>PROFESSIONAL EXPERIENCE</h3>
+        <div><h4>SAN DIEGO TAXPAYER EDUCATIONAL FOUNDATION</h4></div>
+        <div>San Diego, CA</div>
+        <h5>Data Analytics & Inferential Statistics  Co-Lead Intern	March 2024-May 2025</h5>
+        <ul>
+          <li>Lead the 2024 Q3 Homelessness Program analysis, managing a team of 4+ interns to generate insights from program and expenditure data, leveraging statistical analysis and data visualization techniques while maintaining a streamlined, accessible GitHub repository</li>
+          <li>Facilitated communication between interns and managers to promote a collaborative, growth-focused environment that prioritizes continuous learning,  effective data management, and timely deliverable completion.</li>
+        </ul>
+        <br>
+        <h4>SDSU CATERING	San Diego, CA</h4>
+        <h5>Crew Lead		September 2022-June 2025</h5>
+        <ul>
+          <li>Organize event materials and associates on behalf of management to streamline operations and reduce teardown time, boosting event efficiency and ensuring smooth workflow management.</li>
+          <li>Trained and mentored 5 new associates, supporting smooth onboarding and job flow.</li>
+          <li>Maintain strong communication by acting as an intermediary between management, associates, and customers to ensure seamless event execution and team collaboration to the customers' satisfaction.</li>
+        </ul>
+        <div><hr></div>
+        
+        <div>
+          <h3>PROJECTS</h3>
+        <h4>CREDIT CARD FRAUD DETECTION</h4>
+        <ul>
+          <li>Analyzed a dataset of over 250,000 credit card transactions to develop a predictive model for detecting fraud, utilizing unsupervised machine learning and predictive modeling techniques.</li>
+          <li>Conducted preliminary statistical analysis and applied logistic regression to enhance model precision, achieving a false negative rate of less than 2% while maintaining an accuracy of over 90%.</li>
+          <li>Developed adaptive backend Python code, called from a well-organized and presented Jupyter Notebook, allowing adjustments to accuracy, runtime, and false negative thresholds to meet user interests and needs.</li>
+        </ul>
+        <br>
+        <h4>MEASURING EFFECTIVENESS OF SAN DIEGO COUNTY HOMELESSNESS PROGRAMS</h4>
+        <ul>
+          <li>Analyzed datasets comprising program expenditures and annual point-in-time counts of homelessness; standardized data to address bias and enhance model accuracy.</li>
+          <li>Utilized mixed-effects modeling to account for city-specific variations, such as economic conditions.</li>
+          <li>Identified “rapid rehousing” and “flexible funds” as the most effective homelessness intervention programs.</li>
+          <li>Conducted residual analysis and addressed multicollinearity to improve model reliability, removing collinear predictors to refine outcomes.</li>
+          <li>Produced actionable insights for optimizing resource allocation, contributing to regional strategies for reducing unsheltered homelessness in San Diego County which hold the potential to be extrapolated to other counties.</li>
+        </ul>
+        <br>
+        <h4>THE BURDEN OF PUBLIC WAGES ON SAN DIEGO COUNTY TAXPAYERS</h4>
+        <ul>
+          <li>Implemented iterative web scraping algorithms and natural language processing techniques to ensure data accuracy, including standardizing: names, job titles, and addressing confounding factors such as school enrollment.</li>
+          <li>Conducted multivariate regression analyses and independent t-tests to explore wage dynamics, revealing a significant correlation between staff turnover and wage increases in police departments and school districts.</li>
+          <li>Identified a 19.73% wage increase for police officers following a 1% staff reduction and a 7.9% wage increase for teachers switching districts, highlighting the financial burden of turnover on taxpayers.</li>
+        </ul>
+        </div>
+      </div>
     </main>
-  </div>
-
-<body>
-</body>
+  </body>
 </html>

@@ -4,9 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Page</title>
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/style.css" /> <!--Might need to update css depending on page, this is where I'd do it-->
   </head>
-
   <body>
     <div id="header"></div>
     <div id="sidebar"></div>
@@ -20,19 +19,7 @@
       fetch("/includes/sidebar.html")
         .then(response => response.text())
         .then(data => document.getElementById("sidebar").innerHTML = data);
-    </script>
-
-    <main class="content">
-      <div>
-        <p>Hello, my name is Brandon Miner</p>
-        <p>I am an SDSU Alum, and am a grad student apart of USF's MSDS program</p>
-      </div>
-      <div><br></div>
-      <div>
-        <h4>Contact</h4>
-        <p>brandonm333@outlook.com</p>
-        <p>http://www.linkedin.com/in/brandon-miner-3x3</p>
-      </div>
-    </main>
+    </script>  
+    
   </body>
 </html>
