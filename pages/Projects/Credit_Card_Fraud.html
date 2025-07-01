@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="/css/style.css" />
+
+    </head>
+    <body>
+        <div id="header"></div>
+        <div id="sidebar"></div>
+        <script>
+            // Load header
+            fetch("/includes/header.html")
+            .then(response => response.text())
+            .then(data => document.getElementById("header").innerHTML = data);
+
+            // Load sidebar
+            fetch("/includes/sidebar.html")
+            .then(response => response.text())
+            .then(data => document.getElementById("sidebar").innerHTML = data);
+        </script>
+
+        <div>
+            <p>
+                Credit Card Fraud Project Overview WIP
+            </p>
+            <p>
+                <a href="https://github.com/Branflakes333/Credit_Card_Fraud_Project">GitHub</a>
+            </p>
+        </div>
+    </body>
+</html>
