@@ -1,18 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Short description of the site" />
+    <title>Brandon Miner Portfolio</title>
+
+    <!-- Minimal inline styles so it looks OK out of the box -->
+    <style>
+        :root { --max-width: 900px; --gap: 1rem; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+        html,body { height:100%; margin:0; }
+        body { display:flex; align-items:flex-start; justify-content:center; padding:2rem; background:#f7f7f7; color:#111; }
+        .wrap { width:100%; max-width:var(--max-width); background:#fff; padding:1.5rem; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.06); }
+        header, main, footer { display:block; margin-bottom:var(--gap); }
+        nav a { margin-right:0.75rem; text-decoration:none; color:inherit; opacity:.8; }
+        h1 { margin:0 0 .25rem 0; font-size:1.5rem; }
+        p { margin:.25rem 0; line-height:1.5; }
+    </style>
+    <script>
+        MathJax = {
+            tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
+            svg: {fontCache: 'global'}
+        };
+        </script>
+        <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <style>
+      p {
+          text-indent: 3em; /* Indents the first line of all <p> tags by 3 times the font size */
+      }
+    </style>
+</head>
 <body>
-  <div class="sidebarL"></div>
-  <div class="sidebarR"></div>
+  <div class="wrap" role="document">
+    <header>
+      <h1 style="text-align: center;">Brandon Miner</h1>
+      <p style="text-align: center;", class="tagline">Data Scientist</p>
+      <nav aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="">About</a>
+      </nav>
+    </header>
 
-  <header class="header">
-    <h1 style="text-align: center;">Brandon Miner</h1>
-    <nav>
-      <a href="https://www.linkedin.com/in/brandon-miner-3x3/" target="_blank">LinkedIn</a>
-      <a href="https://github.com/Branflakes333" target="_blank">GitHub</a>
-    </nav>
-  </header>
+    <main role="main">
+      <h2>
+        Projects
+      </h2>
+      <a href="https://branflakes333.github.io/lin_reg_final_project/">
+        Exploration of Bayesian Regression
+      </a>
+    </main>
 
-  <main class="content-wrapper">
-    <h2>Welcome to my homepage</h2>
-    <p>This is the main content.</p>
-  </main>
+    <footer>
+      <small><span id="year"></span> Brandon Miner</small>
+    </footer>
+  </div>
+
+  <!-- Small script to keep footer year current -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
-
+</html>
