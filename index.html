@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="Short description of the site" />
+    <meta name="description" content="Portfolio of Brandon Miner" />
     <title>Brandon Miner Portfolio</title>
 
-    <!-- Minimal inline styles so it looks OK out of the box -->
     <style>
+      /* Simple box */
         :root { --max-width: 900px; --gap: 1rem; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
         html,body { height:100%; margin:0; }
         body { display:flex; align-items:flex-start; justify-content:center; padding:2rem; background:#f7f7f7; color:#111; }
@@ -16,29 +16,70 @@
         nav a { margin-right:0.75rem; text-decoration:none; color:inherit; opacity:.8; }
         h1 { margin:0 0 .25rem 0; font-size:1.5rem; }
         p { margin:.25rem 0; line-height:1.5; }
-    </style>
-    <script>
-        MathJax = {
-            tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
-            svg: {fontCache: 'global'}
-        };
-        </script>
-        <script id="MathJax-script" async
-        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-    </script>
-    <style>
-      p {
-          text-indent: 3em; /* Indents the first line of all <p> tags by 3 times the font size */
+
+        /* icon links */
+      .icon a {
+        color: #333;
+        text-decoration: none;
+        margin: 0 0.4rem;
+        font-size: 1.2rem;
       }
+      .icon a:hover {
+        color: #0077b5; /* LinkedIn blue hover tone */
+      }
+
+      /* Project list styles */
+      .proj_list {
+        display: flex;
+        flex-direction: column;   /* stack projects vertically */
+        align-items: center;      /* center the whole group */
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+
+      .project {
+        display: flex;            /* align image and text side by side */
+        align-items: center;      /* vertically center text with image */
+        gap: 1rem;
+        text-align: left;         /* align text naturally */
+        width: 900px;             /* control total width of the project container */
+        justify-content: center;  /* keep consistent centering if text varies */
+      }
+
+      .project img {
+        width: 300px;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 8px; 
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      }
+
+      .project h3 {
+        margin: 0 0 0.25rem;
+      }
+
     </style>
+
+    <!-- Import symbols -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
   <div class="wrap" role="document">
-    <header>
-      <h1 style="text-align: center;">Brandon Miner</h1>
-      <p style="text-align: center;", class="tagline">Data Scientist</p>
+    <header">
+      <div style="text-align: center;">
+        <h1 >Brandon Miner</h1>
+        <h3 class="tagline">Data Scientist</h3>
+        <a class="icon" href="https://www.linkedin.com/in/brandon-minier-3x3/" target="_blank" style="text-decoration: none;">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a class="icon" href="https://github.com/Branflakes333/" target="_blank" style="text-decoration: none;">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      
       <nav aria-label="Main navigation">
         <a href="/">Home</a>
+        <a href="">Contact</a>
         <a href="">About</a>
       </nav>
     </header>
@@ -47,9 +88,34 @@
       <h2>
         Projects
       </h2>
-      <a href="https://branflakes333.github.io/lin_reg_final_project/">
-        Exploration of Bayesian Regression
-      </a>
+      <!-- Exploration of Bayesian Regression - USF FALL MOD 1 Linear Regression Analysis-->
+      <div class="proj_list">
+        <div class="project">
+          <img src="./images/display_bayes_reg.png">
+          <div>
+            <h3>Exploration of Bayesian Regression</h3>
+            <p>
+              Blog post that discusses the limitations of ordinary least squares (OLS) linear regression and motivates the use of Bayesian regression. 
+            </p>
+            <a href="https://branflakes333.github.io/lin_reg_final_project/">Read More</a>
+          </div>          
+        </div>
+      </div>
+      <div class="proj_list">
+        <div class="project">
+          <img src="./images/ccf.png">
+          <div>
+            <h3>Credit Card Fraud Prediction</h3>
+            <p>
+              A step-by-step walk through of a credit card fraud detection project, 
+                covering exploratory data analysis, 
+                PCA for feature selection, 
+                and a logistic regression model optimized to minimize false negatives while maintaining accuracy.
+            </p>
+            <a href="https://branflakes333.github.io/Credit_Card_Fraud_Project/">Read More</a>
+          </div>          
+        </div>
+      </div>
     </main>
 
     <footer>
@@ -57,7 +123,7 @@
     </footer>
   </div>
 
-  <!-- Small script to keep footer year current -->
+  <!-- Add current year -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
