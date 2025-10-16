@@ -38,17 +38,17 @@
       }
 
       .project {
-        display: flex;            /* align image and text side by side */
-        align-items: center;      /* vertically center text with image */
+        display: flex;
+        align-items: center;
         gap: 1rem;
-        text-align: left;         /* align text naturally */
-        width: 900px;             /* control total width of the project container */
-        justify-content: center;  /* keep consistent centering if text varies */
+        text-align: left;
+        width: 900px;
+        justify-content: center;
       }
 
       .project img {
         width: 300px;
-        height: 250px;
+        height: 200px;
         object-fit: cover;
         border-radius: 8px; 
         box-shadow: 0 3px 10px rgba(0,0,0,0.1);
@@ -90,6 +90,7 @@
       </h2>
       <!-- Exploration of Bayesian Regression - USF FALL MOD 1 Linear Regression Analysis-->
       <div class="proj_list">
+
         <div class="project">
           <img src="./images/display_bayes_reg.png">
           <div>
@@ -100,8 +101,7 @@
             <a href="https://brandonminer333.github.io/lin_reg_final_project/">Read More</a>
           </div>          
         </div>
-      </div>
-      <div class="proj_list">
+
         <div class="project">
           <img src="./images/ccf.png">
           <div>
@@ -115,6 +115,17 @@
             <a href="https://brandonminer333.github.io/Credit_Card_Fraud_Project/">Read More</a>
           </div>          
         </div>
+
+        <div class="project">
+          <img src="./images/grapes.png">
+          <div>
+            <h3>California Grape ETL Pipeline</h3>
+            <p>
+              A stremalit GCP app that extracts, transforms, and loads California wine grape data web scraped from a government website.
+            </p>
+            <a href="https://streamlit-dashboard-189778219066.europe-west1.run.app/">Check it out</a>
+          </div>
+        </div>
       </div>
     </main>
 
@@ -122,7 +133,6 @@
       <small><span id="year"></span> Brandon Miner</small>
     </footer>
   </div>
-
   <!-- Add current year -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
