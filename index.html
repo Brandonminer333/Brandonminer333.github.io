@@ -8,10 +8,22 @@
 
     <style>
       /* Simple box */
-        :root { --max-width: 900px; --gap: 1rem; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+        :root {
+          --max-width: 900px;
+          --gap: 1rem;
+          font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+
+          --bg: #f7f7f7;
+          --text: #111;
+          --card-bg: #fff;
+          --muted: #888;
+          --border: #eee;
+          --shadow: 0 6px 18px rgba(0,0,0,.06);
+          --icon-color: #333;
+        }
         html,body { height:100%; margin:0; }
-        body { display:flex; align-items:flex-start; justify-content:center; padding:2rem; background:#f7f7f7; color:#111; }
-        .wrap { width:100%; max-width:var(--max-width); background:#fff; padding:1.5rem; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.06); }
+        body { display:flex; align-items:flex-start; justify-content:center; padding:2rem; background:var(--bg); color:var(--text); }
+        .wrap { width:100%; max-width:var(--max-width); background:var(--card-bg); padding:1.5rem; border-radius:12px; box-shadow:var(--shadow); }
         header, main, footer { display:block; margin-bottom:var(--gap); }
         nav a { margin-right:0.75rem; text-decoration:none; color:inherit; opacity:.8; }
         h1 { margin:0 0 .25rem 0; font-size:1.5rem; }
@@ -19,7 +31,7 @@
 
         /* icon links */
       .icon a {
-        color: #333;
+        color: var(--icon-color);
         text-decoration: none;
         margin: 0 0.4rem;
         font-size: 1.2rem;
@@ -58,6 +70,22 @@
         margin: 0 0 0.25rem;
       }
 
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0b0f14;
+          --text: #e8e8e8;
+          --card-bg: #111824;
+          --muted: #a6b0bf;
+          --border: #2a3442;
+          --shadow: 0 10px 24px rgba(0,0,0,.45);
+          --icon-color: #e8e8e8;
+        }
+
+        .project img {
+          box-shadow: 0 6px 16px rgba(0,0,0,.35);
+        }
+      }
+
     </style>
 
     <!-- Import symbols -->
@@ -68,7 +96,7 @@
     <header>
       <div style="text-align: center;">
         <h1 >Brandon Miner</h1>
-        <h3 class="tagline">Data Scientist</h3>
+        <h3 class="tagline">Building End-to-End Data Systems & AI Solutions</h3>
         <a class="icon" href="https://www.linkedin.com/in/brandon-miner-3x3/" target="_blank" style="text-decoration: none;">
           <i class="fab fa-linkedin"></i>
         </a>
@@ -79,7 +107,8 @@
       
       <nav aria-label="Main navigation">
         <a href="/">Home</a>
-        <a href="">Contact</a>
+        <a href="./reading_list.html">My Reading List</a>
+        <a href="./contact.html">Contact</a>
         <a href="">About</a>
       </nav>
     </header>
@@ -98,7 +127,7 @@
             <p>
               Blog post that discusses the limitations of ordinary least squares (OLS) linear regression and motivates the use of Bayesian regression. 
             </p>
-            <a href="https://brandonminer333.github.io/lin_reg_final_project/">Read More</a>
+            <a href="./projects/bayesian_regression/blog.html">Read More</a>
           </div>          
         </div>
 

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Meet the team that made this blog!" />
+    <title>Bayesian Regression Blog</title>
+
+    <!-- Cool rectangle -->
+    <style>
+        :root { --max-width: 900px; --gap: 1rem; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+        html,body { height:100%; margin:0; }
+        body { display:flex; align-items:flex-start; justify-content:center; padding:2rem; background:#f7f7f7; color:#111; }
+        .wrap { width:100%; max-width:var(--max-width); background:#fff; padding:1.5rem; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.06); }
+        header, main, footer { display:block; margin-bottom:var(--gap); }
+        nav a { margin-right:0.75rem; text-decoration:none; color:inherit; opacity:.8; }
+        h1 { margin:0 0 .25rem 0; font-size:1.5rem; }
+        p { margin:.25rem 0; line-height:1.5; }
+    </style>
+    <!-- Import symbols -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Horizontal team cards-->
+    <style>
+      .team {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+
+      .member {
+        text-align: center;
+        flex: 1 1 200px;
+        max-width: 200px;
+      }
+
+      .member img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px; 
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      }
+
+      .member h3 {
+        margin: 0.5rem 0 0.25rem;
+      }
+
+      .member small a {
+        color: #333;
+        text-decoration: none;
+        margin: 0 0.4rem;
+        font-size: 1.2rem;
+      }
+
+      .member small a:hover {
+        color: #0077b5; /* LinkedIn blue hover tone */
+      }
+    </style>
+</head>
+<body>
+  <div class="wrap" role="document">
+    <header>
+      <h1>An Exploration into Bayesian Regression</h1>
+      <p class="tagline">An Exploration into Bayesian Regression</p>
+      <nav aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="meet_the_team.html">Meet the team</a>
+      </nav>
+    </header>
+
+    <main role="main">
+      <section>
+        <h2>Meet the Team</h2>
+        <div class="team">
+
+          <!-- Ankit -->
+          <div class="member">
+            <img src="./images/ankit_jain.png" alt="Ankit Jain">
+            <h3>Ankit Jain</h3>
+            <small>
+              <a href="https://www.linkedin.com/in/ankitjain90/" target="_blank"><i class="fab fa-linkedin"></i></a>
+              <a href="https://github.com/akjai" target="_blank"><i class="fab fa-github"></i></a>
+            </small>
+          </div>
+
+          <!-- Brandon -->
+          <div class="member">
+            <img src="./images/brandon_miner.jpg" alt="Brandon Miner">
+            <h3>Brandon Miner</h3>
+            <small>
+              <a href="www.linkedin.com/in/brandon-miner-3x3" target="_blank"><i class="fab fa-linkedin"></i></a>
+              <a href="https://github.com/Brandonminer333/" target="_blank"><i class="fab fa-github"></i></a>
+            </small>
+          </div>
+
+          <!-- Nanda -->
+          <div class="member">
+            <img src="./images/nanda_kumar_gunalan.jpg" alt="Nanda Kumar Gunalan">
+            <h3>Nanda Kumar Gunalan</h3>
+            <small>
+              <a href="https://www.linkedin.com/in/gunalannandakumar/" target="_blank"><i class="fab fa-linkedin"></i></a>
+              <a href="https://github.com/NandakumarGunalan" target="_blank"><i class="fab fa-github"></i></a>
+            </small>
+          </div>
+
+          <!-- William -->
+          <div class="member">
+            <img src="./images/william_spagnuolo.jpg" alt="William Spagnuolo">
+            <h3>William Spagnuolo</h3>
+            <small>
+              <a href="https://www.linkedin.com/in/william-spagnuolo-b36b48152/" target="_blank"><i class="fab fa-linkedin"></i></a>
+              <a href="https://github.com/williamspagnuolo" target="_blank"><i class="fab fa-github"></i></a>
+            </small>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <small>&copy; <span id="year"></span> Linear Regression</small>
+    </footer>
+  </div>
+
+  <!-- Add current year -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

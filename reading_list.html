@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="description" content="Brandon Miner reading list" />
+<title>My Reading List</title>
+<style>
+  :root {
+    --max-width: 900px;
+    --gap: 1rem;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+
+    --bg: #f7f7f7;
+    --text: #111;
+    --card-bg: #fff;
+    --muted: #888;
+    --muted-2: #aaa;
+    --border: #eee;
+    --divider: #e8e8e8;
+    --rank-color: #bbb;
+  }
+  html, body { height: 100%; margin: 0; }
+  body { display: flex; align-items: flex-start; justify-content: center; padding: 2rem; background: var(--bg); color: var(--text); }
+  .wrap { width: 100%; max-width: var(--max-width); background: var(--card-bg); padding: 1.5rem; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,.06); }
+  header, main, footer { display: block; margin-bottom: var(--gap); }
+  nav a { margin-right: 0.75rem; text-decoration: none; color: inherit; opacity: .8; }
+  h1 { margin: 0 0 .25rem 0; font-size: 1.5rem; }
+  p { margin: .25rem 0; line-height: 1.5; }
+
+  .subtitle { font-size: 13px; color: var(--muted); margin-bottom: 1rem; }
+  .section-label { font-size: 11px; font-weight: 500; color: var(--muted-2); letter-spacing: 0.07em; text-transform: uppercase; margin: 1.75rem 0 0.5rem; }
+  .book { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 0.5px solid var(--border); }
+  .book:last-child { border-bottom: none; }
+  .rank { font-size: 13px; font-weight: 500; color: var(--rank-color); min-width: 22px; padding-top: 3px; }
+  .rank.done { color: #1D9E75; }
+  .info { flex: 1; }
+  .title { font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.4; }
+  .author { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .badges { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
+  .badge { font-size: 11px; padding: 2px 9px; border-radius: 20px; font-weight: 500; white-space: nowrap; }
+  .badge.read    { background: #E1F5EE; color: #0F6E56; }
+  .badge.reading { background: #E6F1FB; color: #185FA5; }
+  .badge.toread  { background: #F1EFE8; color: #5F5E5A; }
+  .badge.tobuy   { background: #FAEEDA; color: #854F0B; }
+  .badge.new     { background: #EAF3DE; color: #3B6D11; }
+  .badge.free    { background: #EEEDFE; color: #534AB7; }
+  hr.divider { border: none; border-top: 1.5px solid var(--divider); margin: 1.25rem 0 0; }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0f14;
+      --text: #e8e8e8;
+      --card-bg: #111824;
+      --muted: #9aa4b2;
+      --muted-2: #b3bdca;
+      --border: #2a3442;
+      --divider: #2a3442;
+      --rank-color: #c7d0df;
+    }
+
+    .wrap { box-shadow: 0 10px 24px rgba(0,0,0,.45); }
+  }
+</style>
+</head>
+<body>
+<div class="wrap" role="document">
+  <header>
+    <h1>My Reading List</h1>
+    <nav aria-label="Main navigation">
+      <a href="./index.html">Home</a>
+      <a href="./reading_list.html">My Reading List</a>
+      <a href="./contact.html">Contact</a>
+      <a href="">About</a>
+    </nav>
+  </header>
+  <main role="main">
+<p class="subtitle">Ranked by helpfulness to a data scientist / ML engineer</p>
+
+<div class="section-label">To read - ranked</div>
+
+<div class="book">
+  <div class="rank">#1</div>
+  <div class="info">
+    <div class="title">Interpretable Machine Learning</div>
+    <div class="author">Christoph Molnar</div>
+    <div class="badges">
+      <span class="badge toread">to read</span>
+      <span class="badge free">free PDF</span>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#2</div>
+  <div class="info">
+    <div class="title">Supercomputing for Artificial Intelligence</div>
+    <div class="author">Jordi Torres</div>
+    <div class="badges">
+      <span class="badge toread">to read</span>
+      <span class="badge free">free PDF</span>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#3</div>
+  <div class="info">
+    <div class="title">Trustworthy Machine Learning</div>
+    <div class="author">Kush R. Varshney</div>
+    <div class="badges">
+      <span class="badge toread">to read</span>
+      <span class="badge new">newly placed</span>
+      <span class="badge free">free PDF</span>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#4</div>
+  <div class="info">
+    <div class="title">The Ultra-Scale Playbook</div>
+    <div class="author">Nouamane Tazi &amp; Ferdinand Mom</div>
+    <div class="badges">
+      <span class="badge tobuy">to buy</span>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#5</div>
+  <div class="info">
+    <div class="title">The Ethical Algorithm</div>
+    <div class="author">Michael Kearns &amp; Aaron Roth</div>
+    <div class="badges">
+      <span class="badge toread">to read</span>
+      <span class="badge new">newly placed</span>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#6</div>
+  <div class="info">
+    <div class="title">The Art of Uncertainty</div>
+    <div class="author">David Spiegelhalter</div>
+    <div class="badges">
+      <span class="badge toread">to read</span>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#7</div>
+  <div class="info">
+    <div class="title">On the Edge</div>
+    <div class="author">Nate Silver</div>
+    <div class="badges">
+      <span class="badge toread">to read</span>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#8</div>
+  <div class="info">
+    <div class="title">The Signal and the Noise</div>
+    <div class="author">Nate Silver</div>
+    <div class="badges">
+      <span class="badge toread">to read</span>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#9</div>
+  <div class="info">
+    <div class="title">Naked Statistics</div>
+    <div class="author">Charles Wheelan</div>
+    <div class="badges">
+      <span class="badge tobuy">to buy</span>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+<div class="section-label">Currently reading</div>
+
+<div class="book">
+  <div class="rank" style="color:var(--rank-color)">—</div>
+  <div class="info">
+    <div class="title">AI Engineering</div>
+    <div class="author">Chip Huyen</div>
+    <div class="badges"><span class="badge reading">reading</span></div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank" style="color:var(--rank-color)">—</div>
+  <div class="info">
+    <div class="title">The Coming Wave</div>
+    <div class="author">Mustafa Suleyman &amp; Michael Bhaskar</div>
+    <div class="badges"><span class="badge reading">reading</span></div>
+  </div>
+</div>
+
+<hr class="divider">
+<div class="section-label">Have read</div>
+
+<div class="book">
+  <div class="rank done">✓</div>
+  <div class="info">
+    <div class="title">Designing Machine Learning Systems</div>
+    <div class="author">Chip Huyen</div>
+    <div class="badges"><span class="badge read">read</span></div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank done">✓</div>
+  <div class="info">
+    <div class="title">Why Machines Learn</div>
+    <div class="author">Anil Ananthaswamy</div>
+    <div class="badges"><span class="badge read">read</span></div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank done">✓</div>
+  <div class="info">
+    <div class="title">Weapons of Math Destruction</div>
+    <div class="author">Cathy O'Neil</div>
+    <div class="badges"><span class="badge read">read</span></div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank done">✓</div>
+  <div class="info">
+    <div class="title">The Art of Statistics</div>
+    <div class="author">David Spiegelhalter</div>
+    <div class="badges"><span class="badge read">read</span></div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank done">✓</div>
+  <div class="info">
+    <div class="title">How Charts Lie</div>
+    <div class="author">Alberto Cairo</div>
+    <div class="badges"><span class="badge read">read</span></div>
+  </div>
+</div>
+
+  </main>
+  <footer>
+    <small><span id="year"></span> Brandon Miner</small>
+  </footer>
+</div>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

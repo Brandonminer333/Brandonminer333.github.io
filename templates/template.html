@@ -8,14 +8,32 @@
 
     <!-- Minimal inline styles so it looks OK out of the box -->
     <style>
-        :root { --max-width: 900px; --gap: 1rem; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+        :root {
+          --max-width: 900px;
+          --gap: 1rem;
+          font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+
+          --bg: #f7f7f7;
+          --text: #111;
+          --card-bg: #fff;
+          --shadow: 0 6px 18px rgba(0,0,0,.06);
+        }
         html,body { height:100%; margin:0; }
-        body { display:flex; align-items:flex-start; justify-content:center; padding:2rem; background:#f7f7f7; color:#111; }
-        .wrap { width:100%; max-width:var(--max-width); background:#fff; padding:1.5rem; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.06); }
+        body { display:flex; align-items:flex-start; justify-content:center; padding:2rem; background:var(--bg); color:var(--text); }
+        .wrap { width:100%; max-width:var(--max-width); background:var(--card-bg); padding:1.5rem; border-radius:12px; box-shadow:var(--shadow); }
         header, main, footer { display:block; margin-bottom:var(--gap); }
         nav a { margin-right:0.75rem; text-decoration:none; color:inherit; opacity:.8; }
         h1 { margin:0 0 .25rem 0; font-size:1.5rem; }
         p { margin:.25rem 0; line-height:1.5; }
+
+        @media (prefers-color-scheme: dark) {
+          :root {
+            --bg: #0b0f14;
+            --text: #e8e8e8;
+            --card-bg: #111824;
+            --shadow: 0 10px 24px rgba(0,0,0,.45);
+          }
+        }
     </style>
     <script>
         MathJax = {

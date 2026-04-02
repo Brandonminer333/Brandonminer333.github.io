@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Blog exploring the application of Bayesian Regression" />
+    <title>Bayesian Regression Blog</title>
+
+    <!-- rectangle box that looks cool -->
+    <style>
+        :root { --max-width: 900px; --gap: 1rem; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+        html,body { height:100%; margin:0; }
+        body { display:flex; align-items:flex-start; justify-content:center; padding:2rem; background:#f7f7f7; color:#111; }
+        .wrap { width:100%; max-width:var(--max-width); background:#fff; padding:1.5rem; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.06); }
+        header, main, footer { display:block; margin-bottom:var(--gap); }
+        nav a { margin-right:0.75rem; text-decoration:none; color:inherit; opacity:.8; }
+        h1 { margin:0 0 .25rem 0; font-size:1.5rem; }
+        p { margin:.25rem 0; line-height:1.5; }
+    </style>
+    <!-- Import LaTeX -->
+    <script>
+        MathJax = {
+            tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
+            svg: {fontCache: 'global'}
+        };
+        </script>
+        <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <style>
+      /* Indent first line of paragraphs */
+      p {
+          text-indent: 3em; 
+      }
+      /* Center tables */
+      .centered-table {
+          margin-left: auto;
+          margin-right: auto;
+          border-collapse: collapse;
+          width: 80%;
+      }
+      /* Add borders to table */
+      table, th, td {
+        border: 1px solid black;
+      }
+    </style>
+</head>
+<body>
+  <div class="wrap" role="document">
+    <header>
+      <h1>An Exploration into Bayesian Regression</h1>
+      <p class="tagline"></p>
+      <nav aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="https://github.com/Brandonminer333/lin_reg_final_project">Github</a>
+        <a href="meet_the_team.html">Meet the team</a>
+      </nav>
+    </header>
+
+    <main role="main">
+      <section>
+        <h2>Introduction: Why Care About Regression Beyond OLS?</h2>
+        <p> 
+            Making predictions is one of the most powerful things we can do to make the most out of data. 
+            If we are looking at some sample data and believe that we can make predictions on a target data point, linear regression is the way to go. 
+            Linear regression is a statistical method of modeling and estimating the relationship between one or more variables in some data 
+            (called predictors) to generate a prediction. Ordinary Least Squares (OLS) regression is how we choose the estimators to generate our model. 
+            We obtain these estimators by minimizing the sum of squared errors between the estimated predictions and actual values (called residuals).
+            Here is the OLS equation below. X is our predictor data, y is our target, beta is our slope coefficient. We also add an epsilon error term to 
+            indicate what is not explained by our predictors. 
+        </p>
+        <p>
+            $$\hat y = \hat\beta_0 + \hat\beta_1 x_i+\epsilon$$
+        <p> 
+            Our goal is to find a line of best fit that will minimize the residuals between our predicted data and the line.
+        </p>
+        <br>
+        <div> 
+          <iframe src="plots/OLS_plot.html" width="100%" height="600"></iframe>
+        </div>
+        <br>
+        <p>
+            OLS, however, only creates single point estimates for our data. 
+            There really is not a great way to model probability distributions on those estimates, 
+            or in other words - observing the level of uncertainty around the estimates we have come up with. 
+            This is where our discussion of Bayesian regression will come in. 
+        </p>
+        <h2>Why Linear Regression Doesn't Always Get the Job Done</h2>
+        <p> 
+            One of the biggest limitations with linear regression is that it performs poorly on samples with low sample size. 
+            It is not uncommon to work with data in which each data point costs a significant portion of your funding. 
+            This results in not a lot of data in your sample. 
+            The ramifications of a small sample size is that inferences of the linear model are statistically unsound and/or useless. 
+            To draw inference through tools such as hypothesis testing or confidence intervals, 
+              we must be able to assume that the error term is approximately normal (and all other assumptions hold true). 
+            With a small sample size, we cannot apply the central limit theorem to assume approximate normality in the error. 
+            Furthermore, with a small sample size, the standard error blows up. 
+        </p>
+        <p>
+            $$SE(\hat\beta)^2 = \text{Var}(\hat\beta)=\sigma^2(X^TX)^{-1}$$
+        </p>
+        <p>
+            With a small sample size, $\small X^TX$ is nearly singular, which then makes its inverse blow up. Hence, the standard error blows up as well. The consequence is that it becomes effectively impossible to reject the null hypothesis of any test because the realm of possibility of the null hypothesis is so wide. Ignoring inference is also not a good idea because slightly different data with cause our estimated coefficients to change drastically.
+        </p>
+        <!-- Example plot of beta1 sampling distribution by small n -->
+        <div> 
+          <iframe src="plots/beta1_sampling_by_n.html" width="100%" height="600"></iframe>
+        </div>
+        <h2>
+            What Bayesian Regression does Differently
+        </h2>
+        <p> 
+          The power of Bayesian regression lies in the prior. 
+          The prior is the mathematical representation of our prior beliefs about our data before observing our sample. 
+          In the case of Bayesian regression, we can have a prior that the coefficients are zero. 
+          This means that the data must provide sufficient evidence to prove otherwise. 
+          This works very well with small samples because, unless the data are very extreme, 
+            it will not be able to sway the estimated coefficients away from the prior—especially when there are not many data points.
+        </p>
+        <p>
+          Consider an example where we think there might be a correlation between some random variables $X$ and $y$. 
+          Suppose that in truth, there is no correlation. 
+          Under OLS regression, the estimated model will fit some non-flat line due to being unable to see the true correlation in the sampling noise. 
+          Because we have our prior assumption that the true coefficient of  $X$ $X$ is zero, 
+            our Bayesian model does a very good job fitting close to the true function, 
+            since the small dataset couldn't disprove our prior because the sampling noise wasn't statistically powerful.
+
+        </p>
+        <!-- Example plot of Bayes vs SLR regression -->
+         <br>
+        <div> 
+          <iframe src="plots/interactive_regression_1.html" width="100%" height="600"></iframe>
+        </div>
+        <br>
+        <p>
+          Here, we can see how in the simple linear regression case, how Bayesian regression consistently has a lower
+            intercept and/or slope coefficient than OLS regression.
+          This can be expanded to multiple linear regression as well, where we see a similar effect.
+        </p>
+        <br>
+        <!-- Example plot of Bayes vs MLR regression on 100 diff param coefs -->
+        <div> 
+          <iframe src="plots/interactive_regression.html" width="100%" height="600"></iframe>
+        </div>
+        <br>
+        <p>
+          Given 100 predictors with only 5 non-zero coefficients, the Bayesian regression coefficients are shrunk toward zero, 
+            while the OLS regression coefficients are sparatic due to the noise.
+          As the sample size increases, the OLS and Bayesian regression coefficients converge to the similar values.
+        </p>
+        <h2>
+            What is Bayesian Regression
+        </h2>
+        <p>
+	        Baye's Theorem, when applied to linear regression, infers the probability distribution for the parameters, given new evidence. 
+          This means that as data changes/evolves we can challenge our prior beliefs, using Bayesian Regression as our framework. 
+          To begin, we have the same likelihood as we do in OLS, but we add a prior for the coefficients, giving us: 
+        </p>
+        <div>
+          $$\beta\sim N(0,\tau^2I)$$
+        </div>
+        <p>
+          This hyperparameter that we add into the distribution is a reflection of how confident we are that the coefficients are near zero. 
+          This is in contrast to Ordinary Least Squares regression (OLS), where we treat ꞵ coefficients as a fixed but known constants, 
+            but in Bayesian Regression, these ꞵs are random variables.
+        </p>
+        <div>
+          $$\hat\beta_\text{Bayes}=\frac{\sum^n_{i=1}x_iy_i}{\sum^n_{i=1}x^2_i+\lambda}$$
+          where 
+          $$\lambda=\frac{\sigma^2}{\tau^2}$$
+          as compared to OLS:
+          $$\hat\beta_\text{OLS}=\frac{\sum^n_{i=1}x_iy_i}{\sum^n_{i=1}x^2_i}$$
+        </div>
+        <p>
+          As mentioned earlier, the prior you place on the $\beta$ is what changes this coefficient from known to random. 
+          This can be seen in the above equations, where we add the prior precision term, 
+            which is the ratio of noise and prior variances, written as $\lambda$, to our OLS Regression in order to arrive at Bayesian Regression. 
+            Given this, we can think intuitively, observing:
+        </p>
+        <br>
+        <table class="centered-table">
+          <tr>
+            <th>Case</th>
+            <th>$\tau^2$ value</th>
+            <th>$\lambda$ value</th>
+            <th>Coefficient Effect</th>
+          </tr>
+          <tr>
+            <td>Biger $\tau^2$</td>
+            <td>Weak Prior</td>
+            <td>Small $\lambda$</td>
+            <td>Less Shrinkage (Similar to OLS)</td>
+          </tr>
+          <tr>
+            <td>Smaller $\tau^2$</td>
+            <td>Strong Prior</td>
+            <td>Bigger $\lambda$</td>
+            <td>More Shrinkage (Pulls Coefficients toward 0</td>
+          </tr>
+        </table>
+        <br>
+        <p>
+          If we plot this below, we will see that a smaller prior variance, $\tau^2$, will “shrink” our coefficients toward zero. 
+          The dashed horizontal line represents the OLS estimate that we would get without the addition of a prior, 
+            and the sloped dotted line shows the Bayesian estimate with various $\tau^2$ values. 
+          As the Bayesian estimate moves further away from the OLS estimate, you can see the the drop in $\tau^2$ values. 
+          This means that the Bayesian estimate is shrinking the slope toward zero, and the effect being a higher 
+            bias (estimates are now systematically smaller than the actual relationship) and a lower variance.
+        </p>
+        <br>
+        <div>
+          <iframe src="plots/tau_vs_coef_est.html" width="100%" height="600"></iframe>
+        </div>
+        <br>
+        <h2>
+            Going Deeper: Extensions Beyond Basics
+        </h2>
+        <p>
+          What about small models? 
+          This is exactly where Bayesian stands out. 
+          When $n$ is small, estimates can be stabilized by the prior that is included in the model. 
+          A smaller $n$ shrinks our SSE of the predictor values (denominator of our Bayesian Regression), 
+            in turn, shrinking our whole Bayesian model toward zero. If our $n$ was larger, 
+            we would see a shift toward 1, more closely resembling OLS.
+        </p>
+        <p>
+          What about multilevel models? 
+          Bayesian can also be useful here. 
+          When it is important for groups to retain their individuality but share the same underlying regression structure, 
+            Bayesian Regression can allow for all groups to use the same predictors and error structure, 
+            linking them through priors. 
+          This linkage keeps these groups, for example hospitals within regions, 
+            from losing their identity by being pooled together, 
+            as well as eliminating the need to fit a separate model for every group.
+        </p>
+        <p>
+          There are a few drawbacks, however, to consider when thinking about using Bayesian Regression. 
+          One issue is computational power. For a model with a large number of parameters, 
+            it takes a significant amount of computing power to calculate Bayesian distributions for each of the estimates. 
+          Estimating posterior distributions requires using methods such as Markov Chain Monte Carlo (MCMC) algorithms. 
+          MCMC approximates posteriors by using thousands of random samples to eventually reach the most optimal distribution. 
+          This is known as a Markov chain. 
+          As the parameters grow, the time complexity of constructing a large Markov chain grows significantly which can slow down computing time. 
+          When working with huge models, this is definitely something important to consider.
+        </p>
+        <h2>
+            Bayesian Visualization
+        </h2>
+        <p>
+          Let's turn to a real-world example to see how Bayesian regression outperforms OLS regression.
+          We'll use a COVID-19 dataset of the number of people vaccinated, contaminated (have covid), workplace mobility, and the state of residence.
+          Put yourself into the shoes of a scientist in 2021 when the vaccine was first given out commertially.
+          You'd want to get an accurate idea of how the infection is spreading as soon as possible,
+            but you only have so much data at the beginning.
+          The plot below shows the overall mean squared error of an OLS regression model, and a Bayesion regression model. 
+        </p>
+        <br>
+        <div>
+          <iframe src="plots/covid_regression.html" width="100%" height="600"></iframe>
+        </div>
+        <br>
+        <p>
+          You can see that the Bayesian regression model outperforms the OLS regression model at the beginning of our dataset.
+          Even though we are makng a prior assumption that the coefficients are zero, 
+            the Bayesian model is still able to outperform OLS regression because it is not overfitting to the small amount of data.
+          This could be due to the fact that there is no underlying correlation that can be identified through the noise.
+          This causes the OLS regression to perform poorly, whereas the Bayesian model is much more cautious.
+        </p>
+        <h2>
+            Conclusion
+        </h2>
+        <p>
+           OLS regression is one of the most widely used methods for building predictive models. 
+           However, OLS is not always a perfect fit, as it assumes that data are normally distributed which is not the case in the real world. 
+           Moreover, in many domains where extensive research already exists and valuable prior knowledge is available, 
+            OLS offers no way to incorporate this information into the model, 
+            even when it could be critical for increasing the effectiveness of the prediction.
+        </p>
+
+        <p>
+          For example, if we use OLS to distinguish between certain groups, 
+            it can only tell us whether the groups appear different or that the model is uncertain. 
+          While a Bayesian approach allows us to directly express how the evidence changes our belief: 
+            whether it makes us more confident that the groups differ, more confident that they're similar, or either.
+        </p>
+
+        <p>
+           This is where Bayesian regression becomes more effective, offering several clear advantages over OLS:
+        </p>
+
+        <ul>
+          <li>Really effective even in the cases where data is limited by making use of the prior information.</li>
+          <li>Helps to deal with uncertainty by representing parameters as entire probability distributions instead of single point estimates.</li>
+          <li>Better handling of complex data with non linear-relationships by choosing suitable prior distributions.</li>
+          <li>Less sensitive to outliers, making the model more stable than the classical regression methods.</li>
+        </ul>
+
+        <p>
+          There is no mechanism in OLS to include prior knowledge, 
+            but Bayesian regression provides this capability—making it particularly powerful in fields with continuous, 
+            ongoing research and strong domain expertise like healthcare and finance.
+        </p>
+
+        <p>
+          Embracing uncertainty is the key for successful impacts especially in Data Science. 
+          Bayesian regression is one of the effective methods to handle 
+            uncertainty particularly when data are limited and prior
+            knowledge about the parameters is available.
+        </p>
+      <h2>References</h2>
+        <ul>
+          <li>
+            <a href="https://www.geeksforgeeks.org/machine-learning/implementation-of-bayesian-regression/"
+                target="_blank" rel="noopener noreferrer"> Implementation of Bayesian Regression — GeeksforGeeks
+            </a>
+          </li>
+          <li>
+            <a href="https://www.apadivisions.org/division-7/publications/newsletters/developmental/2018/07/bayesian-statistics"
+                target="_blank" rel="noopener noreferrer"> Bayesian Statistics Overview — American Psychological Association (APA)
+            </a>   
+          </li>
+          <li>
+            Kutner, M. H., Nachtsheim, C. J., Neter, J., & Li, W. (2005).
+            <em>Applied Linear Statistical Models</em> (5th ed.). McGraw-Hill/Irwin.
+          </li>
+        </ul>
+      </section>
+      
+    </main>
+
+    <footer>
+      <small><span id="year"></span> Linear Regression</small>
+    </footer>
+  </div>
+
+  <!-- Add current year -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

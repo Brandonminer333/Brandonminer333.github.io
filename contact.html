@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Contact Brandon Miner" />
+  <title>Contact - Brandon Miner</title>
+  <style>
+    :root {
+      --max-width: 900px;
+      --gap: 1rem;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+
+      --bg: #f7f7f7;
+      --text: #111;
+      --card-bg: #fff;
+      --shadow: 0 6px 18px rgba(0,0,0,.06);
+    }
+    html, body { height: 100%; margin: 0; }
+    body { display: flex; align-items: flex-start; justify-content: center; padding: 2rem; background: var(--bg); color: var(--text); }
+    .wrap { width: 100%; max-width: var(--max-width); background: var(--card-bg); padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow); }
+    header, main, footer { display: block; margin-bottom: var(--gap); }
+    nav a { margin-right: 0.75rem; text-decoration: none; color: inherit; opacity: .8; }
+    h1 { margin: 0 0 .25rem 0; font-size: 1.5rem; }
+    p { margin: .25rem 0; line-height: 1.5; }
+    ul { padding-left: 1.2rem; margin: 1rem 0 0; }
+    li { margin: 0.5rem 0; }
+    a { color: inherit; }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0f14;
+        --text: #e8e8e8;
+        --card-bg: #111824;
+        --shadow: 0 10px 24px rgba(0,0,0,.45);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap" role="document">
+    <header>
+      <h1>Contact</h1>
+      <nav aria-label="Main navigation">
+        <a href="./index.html">Home</a>
+        <a href="./reading_list.html">My Reading List</a>
+        <a href="./contact.html">Contact</a>
+        <a href="">About</a>
+      </nav>
+    </header>
+
+    <main role="main">
+      <p>Connect with me through the links below.</p>
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:brandonm333@outlook.com">brandonm333@outlook.com</a></li>
+        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/brandon-miner-3x3/" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/brandon-miner-3x3/</a></li>
+        <li><strong>GitHub:</strong> <a href="https://github.com/Brandonminer333/" target="_blank" rel="noopener noreferrer">https://github.com/Brandonminer333/</a></li>
+      </ul>
+    </main>
+
+    <footer>
+      <small><span id="year"></span> Brandon Miner</small>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
