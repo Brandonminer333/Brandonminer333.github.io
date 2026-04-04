@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Short description of the site" />
+    <title>Brandon Miner Portfolio</title>
+
+    <!-- Minimal inline styles so it looks OK out of the box -->
+    <style>
+        :root {
+          --max-width: 900px;
+          --gap: 1rem;
+          font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+
+          --bg: #f7f7f7;
+          --text: #111;
+          --card-bg: #fff;
+          --muted: #888;
+          --border: #eee;
+          --shadow: 0 6px 18px rgba(0,0,0,.06);
+          --icon-color: #333;
+        }
+        html,body { height:100%; margin:0; }
+        body { display:flex; align-items:flex-start; justify-content:center; padding:2rem; background:var(--bg); color:var(--text); }
+        .wrap { width:100%; max-width:var(--max-width); background:var(--card-bg); padding:1.5rem; border-radius:12px; box-shadow:var(--shadow); }
+        header, main, footer { display:block; margin-bottom:var(--gap); }
+        nav a { margin-right:0.75rem; text-decoration:none; color:inherit; opacity:.8; }
+        nav a:hover { opacity:1; }
+        h1 { margin:0 0 .25rem 0; font-size:1.5rem; }
+        p { margin:.25rem 0; line-height:1.5; }
+        @media (prefers-color-scheme: dark) {
+          :root {
+            --bg: #0b0f14;
+            --text: #e8e8e8;
+            --card-bg: #111824;
+            --muted: #a6b0bf;
+            --border: #2a3442;
+            --shadow: 0 10px 24px rgba(0,0,0,.45);
+            --icon-color: #e8e8e8;
+          }
+        }
+    </style>
+    <script>
+        MathJax = {
+            tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
+            svg: {fontCache: 'global'}
+        };
+        </script>
+        <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <style>
+      p {
+          text-indent: 3em; /* Indents the first line of all <p> tags by 3 times the font size */
+      }
+    </style>
+</head>
+<body>
+  <div class="wrap" role="document">
+    <header>
+      <h1 style="text-align: center;">Brandon Miner</h1>
+      <h3 style="text-align: center;", class="tagline">Data Scientist</h3>
+      <h3 style="text-align: center;", class="link"><a href="https://github.com/Brandonminer333/Credit_Card_Fraud_Project">GitHub Repo</a></h3>
+      <nav aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="">About</a>
+      </nav>
+    </header>
+
+    <main role="main">
+        <div>
+            <h1>Credit Card Fraud Prediction</h2>
+            <h3>A walkthrough of the modeling process</h3>
+        </div>
+        <div>
+            <h2>Exploratory Data Analysis (EDA)</h2>
+            <p>
+                The first step is the explore our data set to see if we can gain any insight about the data. 
+                The obvious first, and only, choice is to look at "Amount".
+
+            </p>
+            <img src="images/histogram.png" alt="transaction amount histogram" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+            <p>
+                From the above histograms, 
+                    we can see that there is absolutely no association between amount and fraudulent credit card transactions. 
+                But doing this for all 28 other features would be time-consuming and impractical.
+            </p>
+        </div>
+        <div>
+            <h2>Pricipal Component Analysis (PCA)</h2>
+            <p>
+                PCA provides us with multiple benefits:
+- Dimensionality Reduction (Model Complexity Reduction)
+- Decreased Overfitting
+- Handles Multicollinearity
+
+The Scree Plot and Cumulative Explained Variance plots below demonstrate how much each principal component accounts for explained variance.
+            </p>
+            <img src="images/pcs_variance.png" alt="Scree Plot and Cumulative Explained Variance" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+            <p>
+                The plots show that the 1st principal component("PC1") accounts for 33%, 
+                    of the explained variance. All following principal components account for &lt;11&percnt; of explained variance. 
+                Because "PC1" contains most of the explained variance, 
+                    we want to now find which features most greatly correlate to "PC1". 
+            </p>
+            <img src="images/pca_biplot.png" alt="PCA Biplot" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+            <p>
+                The features which most strongly correlate to "PC1" are the features whose vector arrows are the larger along the x-axis. 
+                We can also view "PC1`"" vs. "PC2" by looking at all the data.
+            </p>
+            <img src="images/pca_classifying.png" alt="PCA1 vs PCA2 with Fraud Highlighted" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+            <p>
+                It is interesting to see that just "PC1" and "PC2" almost perfectly split the fraud and non-fraud transactions. 
+                Based on the PCA Biplot, we select our variables as well as define out target feature column matrix.
+            </p>
+            <p>
+                From this exploration we have elected the following features to be used in our model:
+            </p>
+            <p style="text-align: center;">
+                'V1','V2','V3','V4','V5','V6','V7','V9','V10','V11','V12','V14','V16','V17','V18','V19'
+            </p>
+        </div>
+        <div>
+            <h2>Modeling - Logistic Regression</h2>
+            <p>
+                Since we are dealing with a binary classification problem (fraud or not fraud), 
+                    logistic regrression is by far the best starting approach. 
+                For the purpose of this project, we will stick to a logistic regression model.
+            </p>
+            <p>We used "Scikit-Learn" as our modeling package. Our hyperparameters selected we as follows:</p>
+            <ul>
+                <li>LOSS function = logit</li>
+                <li>max iterations = 10,000</li>
+                <li>learning rate = 'optimal'</li>
+            </ul>
+            <p>
+                This is where things get interesting. We want to avoid false negatives at all cost while perserving a streamlined payment experience to customers. 
+                In this case, a false negative is when our model classifies "no fraud" when in reality the transacton was fraudulent.
+                Think of the model as being the text message fraud alert system your bank uses.
+                When it detects an unusual transaction, it asks you for further confirmation, or outright blocks the transaction. 
+                To this end, we want to select a threshold which dictates our descision on whether we should classify a transaction as fraudulent or not.
+                This threshold(&tau;) needs to be where we minimize the false negative rate while preserving a low false positive rate. 
+                By default, &tau;=0.5. This produces the highest overall accuracy.
+                So how high of a false positive rate are we willing to accept to reduce the false negative rate?
+            </p>
+            <p>
+                We can illustrate this tradeoff with the following ROC-AUC graph:
+            </p>
+            <img src="images/roc-auc.png" alt="ROC-AUC Curve" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+            <p>
+                Since FNR = 1 - TPR, maximizing TPR minimizes FNR. 
+                Therefore, we can see that by only subtly decreasing &tau;, 
+                    we are able to greatly increase TPR, and thus decrease FNR at only a minor increase in FPR. 
+                The specific choice of $\tau$ depends on how large of a FPR we are comfortable. 
+                Let's assume that we want a FPR no greater than 2&percnt;, then this correlates to a threshold of &tau; = 0.484
+            </p>
+            <p>
+                By only slightly decreasing the threshold, we were able to decrease FNR by 0.16&percnt;. 
+                While this is a minor optimization, a larger tolerance for false positive rate would yield a larger decrease, 
+                    though FNR decreases slower than FPR increases as the threshold decreases.
+            </p>
+        </div>
+    </main>
+</body>
+</html>

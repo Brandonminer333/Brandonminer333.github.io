@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1" />
+      <meta name="description" content="Blog answering questions about Naive Bayes" />
+      <title>Naive Bayes Question & Explore Blog</title>
+      <style>
+         :root {
+           --max-width: 900px;
+           --gap: 1rem;
+           font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+
+           --bg: #f7f7f7;
+           --text: #111;
+           --card-bg: #fff;
+           --muted: #888;
+           --border: #eee;
+           --shadow: 0 6px 18px rgba(0,0,0,.06);
+           --icon-color: #333;
+         }
+         html,body { height:100%; margin:0; }
+         body { margin:0; padding:2rem; background:var(--bg); color:var(--text);
+         display:flex; justify-content:center; }
+         .wrap { width:100%; max-width:var(--max-width); background:var(--card-bg);
+         padding:1.5rem; border-radius:12px;
+         box-shadow:var(--shadow); }
+         h1,h2,h3 { margin-top:1.5rem; }
+         pre { background:var(--border); padding:1rem; border-radius:8px; overflow-x:auto; }
+         p { text-indent:3em; line-height:1.5; }
+         nav a { margin-right:0.75rem; text-decoration:none; color:inherit; opacity:.8; }
+         nav a:hover { opacity:1; }
+         @media (prefers-color-scheme: dark) {
+           :root {
+             --bg: #0b0f14;
+             --text: #e8e8e8;
+             --card-bg: #111824;
+             --muted: #a6b0bf;
+             --border: #2a3442;
+             --shadow: 0 10px 24px rgba(0,0,0,.45);
+             --icon-color: #e8e8e8;
+           }
+         }
+      </style>
+      <!-- MathJax -->
+      <script>
+         MathJax = {
+             tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
+             svg: {fontCache: 'global'}
+         };
+      </script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+   </head>
+   <body>
+      <div class="wrap">
+         <header>
+            <h1>Naive Bayes Questions and Discovered Answers</h1>
+            <nav>
+               <a href="/">Home</a>
+               <a href="https://github.com/Brandonminer333/Naive-Bayes-Exploration">Github</a>
+            </nav>
+         </header>
+         <main>
+            <h2>Setup</h2>
+            <pre>
+from backend import *
+
+X, y = make_synthetic_data(n=500, w=50, c=2,
+                           avg_doc_length=50,
+                           class_sep=0.001,
+                           random_state=123)
+synth_acc = synthetic_model(X, y, random_state=123)
+print("Accuracy:", synth_acc)
+</pre>
+            <pre>Accuracy: 0.87</pre>
+            <h2>Questions</h2>
+            <h3>How does vocabulary size vs sample size vs document size affect the model?</h3>
+            <pre>
+ns = [50, 500, 5000, 50000]
+
+for num in ns:
+    X, y = make_synthetic_data(n=num, w=50, c=2,
+                                avg_doc_length=50,
+                                class_sep=0.001,
+                                random_state=123)
+    synth_acc = synthetic_model(X, y, random_state=123)
+    print("Accuracy:", synth_acc)
+</pre>
+            <pre>
+Accuracy: 0.9
+Accuracy: 0.87
+Accuracy: 0.855
+Accuracy: 0.8623
+</pre>
+            <p>
+               Holding other variables consistent, sample size adds noise. Not all data is “good” data: the data must provide meaningful evidence.
+            </p>
+            <pre>
+# Vary vocabulary size (w)
+ws = [50, 500, 5000, 50000]
+
+for num in ws:
+    X, y = make_synthetic_data(n=500, w=num, c=2,
+                                avg_doc_length=50,
+                                class_sep=0.001,
+                                random_state=123)
+    synth_acc = synthetic_model(X, y, random_state=123)
+    print("Accuracy:", synth_acc)
+</pre>
+            <pre>
+Accuracy: 0.87
+Accuracy: 1.0
+Accuracy: 1.0
+Accuracy: 1.0
+</pre>
+            <p>
+               As vocabulary size increases, data becomes sparse and many words become one-to-one identifiers for classes.
+            </p>
+            <pre>
+# Vary document size (avg_doc_length)
+ds = [50, 500, 5000, 50000]
+
+for num in ds:
+    X, y = make_synthetic_data(n=500, w=50, c=2,
+                                avg_doc_length=num,
+                                class_sep=0.001,
+                                random_state=123)
+    synth_acc = synthetic_model(X, y, random_state=123)
+    print("Accuracy:", synth_acc)
+</pre>
+            <pre>
+Accuracy: 0.87
+Accuracy: 1.0
+Accuracy: 1.0
+Accuracy: 1.0
+</pre>
+            <p>
+               Increasing document size introduces many uniquely identifying words, making classification trivial.
+            </p>
+            <h3>How does increasing classes affect accuracy?</h3>
+            <p>Intuition: more classes usually require more data.</p>
+            <pre>
+# Vary class count
+cs = [i for i in range(2, 5)]
+ns = [50, 500, 5000, 50000]
+
+for num in cs:
+    X, y = make_synthetic_data(n=500, w=50, c=num,
+                                avg_doc_length=50,
+                                class_sep=0.001,
+                                random_state=123)
+    synth_acc = synthetic_model(X, y, random_state=123)
+    print("Accuracy:", synth_acc)
+</pre>
+            <pre>
+Accuracy: 0.87
+Accuracy: 0.65
+Accuracy: 0.56
+</pre>
+            <p>
+               Accuracy drops as number of classes increases.
+            </p>
+            <pre>
+# Compare many classes vs many samples
+cs = [i for i in range(2, 6)]
+ns = [500, 50000, 500000, 500000]
+
+for i in range(0, 4):
+    X, y = make_synthetic_data(n=ns[i], w=50, c=cs[i],
+                                avg_doc_length=50,
+                                class_sep=0.001,
+                                random_state=123)
+    synth_acc = synthetic_model(X, y, random_state=123)
+    print("Accuracy:", synth_acc)
+</pre>
+            <pre>
+Accuracy: 0.87
+Accuracy: 0.7342
+Accuracy: 0.6835
+Accuracy: 0.64954
+</pre>
+            <p>
+               Sample size must increase very quickly when class count grows.
+            </p>
+            <h3>How does spam adding “non-spam gibberish” affect predictions?</h3>
+            <p>Intuition: Shouldn't affect much.</p>
+            <pre>
+# Add random features from class 0 to class 1
+X, y = make_synthetic_data(
+    n=500, w=50, c=2,
+    avg_doc_length=50,
+    class_sep=0.001,
+    random_state=123
+)
+
+data = np.concatenate((X, y.reshape(-1, 1)), axis=1)
+
+data_0 = data[data[:, 50] == 0]
+data_1 = data[data[:, 50] == 1]
+
+for idx in range(len(data_1)):
+    rand_row = data_0[np.random.randint(0, len(data_0))]
+    data_1[idx, :50] = data_1[idx, :50] + rand_row[:50] 
+    # Leave data_1[idx, 50] unchanged (the label stays 1)
+
+data = np.concatenate((data_0, data_1), axis=0)
+
+X_new = data[:, :50]   # all rows, first 50 columns
+y_new = data[:, 50]    # all rows, last column
+
+print(synthetic_model(X, y, random_state=123))
+print(synthetic_model(X_new, y_new, random_state=123))
+</pre>
+            <pre>
+0.87
+0.66
+</pre>
+            <p>
+               With heavily overlapping classes, adding noise reduces accuracy significantly.
+            </p>
+            <pre>
+# Repeat with better class separation
+X, y = make_synthetic_data(
+    n=500, w=50, c=2,
+    avg_doc_length=50,
+    class_sep=0.01,
+    random_state=123
+)
+
+data = np.concatenate((X, y.reshape(-1, 1)), axis=1)
+
+data_0 = data[data[:, 50] == 0]
+data_1 = data[data[:, 50] == 1]
+
+for idx in range(len(data_1)):
+    rand_row = data_0[np.random.randint(0, len(data_0))]
+    data_1[idx, :50] = data_1[idx, :50] + rand_row[:50] 
+    # Leave data_1[idx, 50] unchanged (the label stays 1)
+
+data = np.concatenate((data_0, data_1), axis=0)
+
+X_new = data[:, :50]   # all rows, first 50 columns
+y_new = data[:, 50]    # all rows, last column
+
+print(synthetic_model(X, y, random_state=123))
+print(synthetic_model(X_new, y_new, random_state=123))
+</pre>
+            <pre>
+1.0
+0.94
+</pre>
+            <p>With more separation, degradation is smaller.</p>
+            <!-- <h3>How does wordcount disparity between classes affect the model?</h3> -->
+            <h3>How does large proportion difference affect the model?</h3>
+            <pre>
+# Drop 90% of class 1 examples
+X, y = make_synthetic_data(
+    n=1000, w=50, c=2,
+    avg_doc_length=50,
+    class_sep=0.001,
+    random_state=123
+)
+
+# Probability of dropping class 1 examples (e.g., drop 50%)
+p_drop = 0.9
+
+# random draw: True = drop, False = keep
+drop_mask = np.random.rand(len(y)) < p_drop
+
+# keep = either class 0 OR (class 1 & not dropped)
+keep = (y == 0) | ((y == 1) & (~drop_mask))
+
+X_new = X[keep]
+y_new = y[keep]
+
+print("Original proportion of class 1:", np.mean(y))
+print("New proportion of class 1:", round(np.mean(y_new), 3))
+print()
+print(synthetic_model(X, y, random_state=123))
+print(round(synthetic_model(X_new, y_new, random_state=123), 3))
+print()
+print(synthetic_confusion(X_new, y_new))
+</pre>
+            <pre>
+Original proportion of class 1: 0.488
+New proportion of class 1: 0.092
+
+0.83
+0.929
+
+[[102   2]
+ [  7   2]]
+</pre>
+            <p>
+               Accuracy increases because nearly all examples belong to one class.  
+               But the model still predicts the minority class occasionally.
+            </p>
+         </main>
+         <footer>
+            <small><span id="year"></span></small>
+         </footer>
+      </div>
+      <script>
+         document.getElementById('year').textContent = new Date().getFullYear();
+      </script>
+   </body>
+</html>
