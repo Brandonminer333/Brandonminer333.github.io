@@ -8,14 +8,60 @@
 
     <!-- rectangle box that looks cool -->
     <style>
-        :root { --max-width: 900px; --gap: 1rem; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+        :root {
+          --max-width: 900px;
+          --gap: 1rem;
+          font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+
+          --bg: #f7f7f7;
+          --text: #111;
+          --card-bg: #fff;
+          --muted: #888;
+          --border: #eee;
+          --shadow: 0 6px 18px rgba(0,0,0,.06);
+          --icon-color: #333;
+        }
         html,body { height:100%; margin:0; }
-        body { display:flex; align-items:flex-start; justify-content:center; padding:2rem; background:#f7f7f7; color:#111; }
-        .wrap { width:100%; max-width:var(--max-width); background:#fff; padding:1.5rem; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.06); }
+        body { display:flex; align-items:flex-start; justify-content:center; padding:2rem; background:var(--bg); color:var(--text); }
+        .wrap { width:100%; max-width:var(--max-width); background:var(--card-bg); padding:1.5rem; border-radius:12px; box-shadow:var(--shadow); }
         header, main, footer { display:block; margin-bottom:var(--gap); }
         nav a { margin-right:0.75rem; text-decoration:none; color:inherit; opacity:.8; }
+        nav a:hover { opacity:1; }
         h1 { margin:0 0 .25rem 0; font-size:1.5rem; }
         p { margin:.25rem 0; line-height:1.5; }
+        .icon a {
+          color: var(--icon-color);
+          text-decoration: none;
+          margin: 0 0.4rem;
+          font-size: 1.2rem;
+        }
+        .icon a:hover {
+          color: #0077b5;
+        }
+        .centered-table {
+          margin-left: auto;
+          margin-right: auto;
+          border-collapse: collapse;
+          width: 80%;
+        }
+        table, th, td {
+          border: 1px solid black;
+        }
+        @media (prefers-color-scheme: dark) {
+          :root {
+            --bg: #0b0f14;
+            --text: #e8e8e8;
+            --card-bg: #111824;
+            --muted: #a6b0bf;
+            --border: #2a3442;
+            --shadow: 0 10px 24px rgba(0,0,0,.45);
+            --icon-color: #e8e8e8;
+          }
+
+          body {
+            background: var(--bg);
+          }
+        }
     </style>
     <!-- Import LaTeX -->
     <script>
@@ -244,7 +290,7 @@
           When working with huge models, this is definitely something important to consider.
         </p>
         <h2>
-            Bayesian Visualization
+            Real-World Use Case: Early Telemetry Analytics
         </h2>
         <p>
           Let's turn to a real-world example to see how Bayesian regression outperforms OLS regression.
@@ -267,7 +313,7 @@
           This causes the OLS regression to perform poorly, whereas the Bayesian model is much more cautious.
         </p>
         <h2>
-            Conclusion
+            Key Takeaways
         </h2>
         <p>
            OLS regression is one of the most widely used methods for building predictive models. 
@@ -307,33 +353,36 @@
             uncertainty particularly when data are limited and prior
             knowledge about the parameters is available.
         </p>
-      <h2>References</h2>
-        <ul>
-          <li>
-            <a href="https://www.geeksforgeeks.org/machine-learning/implementation-of-bayesian-regression/"
-                target="_blank" rel="noopener noreferrer"> Implementation of Bayesian Regression — GeeksforGeeks
-            </a>
-          </li>
-          <li>
-            <a href="https://www.apadivisions.org/division-7/publications/newsletters/developmental/2018/07/bayesian-statistics"
-                target="_blank" rel="noopener noreferrer"> Bayesian Statistics Overview — American Psychological Association (APA)
-            </a>   
-          </li>
-          <li>
-            Kutner, M. H., Nachtsheim, C. J., Neter, J., & Li, W. (2005).
-            <em>Applied Linear Statistical Models</em> (5th ed.). McGraw-Hill/Irwin.
-          </li>
-        </ul>
-      </section>
       
+        <details style="margin-top: 2rem; padding: 1rem; border: 1px solid #eaeaea; border-radius: 8px;">
+          <summary style="cursor: pointer; font-weight: bold; color: #8a8a8a;">
+            View References
+          </summary>
+          <ul style="margin-top: 1rem; line-height: 1.6;">
+            <li>
+              <a href="https://www.geeksforgeeks.org/machine-learning/implementation-of-bayesian-regression/" target="_blank">
+                Implementation of Bayesian Regression — GeeksforGeeks
+              </a>
+            </li>
+            <li>
+              <a href="https://www.apadivisions.org/division-7/publications/newsletters/developmental/2018/07/bayesian-statistics" target="_blank">
+                Bayesian Statistics Overview — American Psychological Association (APA)
+              </a>
+            </li>
+            <li>
+              Kutner, M. H., Nachtsheim, C. J., Neter, J., & Li, W. (2005). 
+              <em>Applied Linear Statistical Models</em> (5th ed.). McGraw-Hill/Irwin.
+            </li>
+          </ul>
+        </details>
+      </section>
     </main>
 
     <footer>
-      <small><span id="year"></span> Linear Regression</small>
+      <small><span id="year"></span> Brandon Miner</small>
     </footer>
   </div>
 
-  <!-- Add current year -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
