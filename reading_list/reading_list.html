@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="description" content="Brandon Miner reading list" />
+<title>My Reading List</title>
+<style>
+  :root {
+    --max-width: 900px;
+    --gap: 1rem;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+
+    --bg: #f7f7f7;
+    --text: #111;
+    --card-bg: #fff;
+    --muted: #888;
+    --muted-2: #aaa;
+    --border: #eee;
+    --divider: #e8e8e8;
+    --rank-color: #bbb;
+  }
+  html, body { height: 100%; margin: 0; }
+  body { display: flex; align-items: flex-start; justify-content: center; padding: 2rem; background: var(--bg); color: var(--text); }
+  .wrap { width: 100%; max-width: var(--max-width); background: var(--card-bg); padding: 1.5rem; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,.06); }
+  header, main, footer { display: block; margin-bottom: var(--gap); }
+  nav a { margin-right: 0.75rem; text-decoration: none; color: inherit; opacity: .8; }
+  h1 { margin: 0 0 .25rem 0; font-size: 1.5rem; }
+  p { margin: .25rem 0; line-height: 1.5; }
+
+  .subtitle { font-size: 13px; color: var(--muted); margin-bottom: 1rem; }
+  .section-label { font-size: 11px; font-weight: 500; color: var(--muted-2); letter-spacing: 0.07em; text-transform: uppercase; margin: 1.75rem 0 0.5rem; }
+  .book { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 0.5px solid var(--border); }
+  .book:last-child { border-bottom: none; }
+  .rank { font-size: 13px; font-weight: 500; color: var(--rank-color); min-width: 22px; padding-top: 3px; }
+  .rank.done { color: #1D9E75; }
+  .info { flex: 1; }
+  .title { font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.4; text-decoration: none; display: block; }
+  .title:hover { text-decoration: underline; }
+  .author { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .badges { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
+  .badge { font-size: 11px; padding: 2px 9px; border-radius: 20px; font-weight: 500; white-space: nowrap; text-decoration: none; }
+  .badge.tobuy   { background: #FAEEDA; color: #854F0B; }
+  .badge.owned   { background: #EAF3DE; color: #3B6D11; }
+  .badge.free    { background: #EEEDFE; color: #534AB7; }
+  hr.divider { border: none; border-top: 1.5px solid var(--divider); margin: 1.25rem 0 0; }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0f14;
+      --text: #e8e8e8;
+      --card-bg: #111824;
+      --muted: #9aa4b2;
+      --muted-2: #b3bdca;
+      --border: #2a3442;
+      --divider: #2a3442;
+      --rank-color: #c7d0df;
+    }
+
+    .wrap { box-shadow: 0 10px 24px rgba(0,0,0,.45); }
+  }
+</style>
+</head>
+<body>
+<div class="wrap" role="document">
+  <header>
+    <h1>My Reading List</h1>
+    <nav aria-label="Main navigation">
+      <a href="./index.html">Home</a>
+      <a href="./reading_list.html">My Reading List</a>
+      <a href="./contact.html">Contact</a>
+      <a href="">About</a>
+    </nav>
+  </header>
+  <main role="main">
+<p class="subtitle">Ranked by helpfulness to a data scientist / ML engineer</p>
+
+<div class="section-label">To read - ranked</div>
+
+<div class="book">
+  <div class="rank">#1</div>
+  <div class="info">
+    <a href="https://huggingface.co/spaces/nanotron/ultrascale-playbook?section=high-level_overview" class="title" target="_blank">The Ultra-Scale Playbook</a>
+    <div class="author">Nouamane Tazi &amp; Ferdinand Mom</div>
+    <div class="badges">
+      <span class="badge tobuy">to buy</span>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#2</div>
+  <div class="info">
+    <a href="https://torres.ai/supercomputing-for-ai/" class="title" target="_blank">Supercomputing for Artificial Intelligence</a>
+    <div class="author">Jordi Torres</div>
+    <div class="badges">
+
+      <a href="https://torres.ai/supercomputing-for-ai/" class="badge free" target="_blank">free PDF</a>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#3</div>
+  <div class="info">
+    <a href="https://christophm.github.io/interpretable-ml-book/" class="title" target="_blank">Interpretable Machine Learning</a>
+    <div class="author">Christoph Molnar</div>
+    <div class="badges">
+
+      <a href="https://christophm.github.io/interpretable-ml-book/" class="badge free" target="_blank">free PDF</a>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#4</div>
+  <div class="info">
+    <a href="https://www.barnesandnoble.com/s/The%20Ethical%20Algorithm" class="title" target="_blank">The Ethical Algorithm</a>
+    <div class="author">Michael Kearns &amp; Aaron Roth</div>
+    <div class="badges">
+     <span class="badge tobuy">to buy</span>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#5</div>
+  <div class="info">
+    <a href="http://www.trustworthymachinelearning.com/" class="title" target="_blank">Trustworthy Machine Learning</a>
+    <div class="author">Kush R. Varshney</div>
+    <div class="badges">
+      <a href="http://www.trustworthymachinelearning.com/" class="badge free" target="_blank">free PDF</a>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#6</div>
+  <div class="info">
+    <a href="https://www.barnesandnoble.com/w/invisible-women-caroline-criado-perez/1129490658" class="title" target="_blank">Invisible Women</a>
+    <div class="author">Caroline Criado-Perez</div>
+    <div class="badges">
+     <span class="badge tobuy">to buy</span>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#7</div>
+  <div class="info">
+    <a href="https://www.barnesandnoble.com/s/Automating%20Inequality" class="title" target="_blank">Automating Inequality</a>
+    <div class="author">Virginia Eubanks</div>
+    <div class="badges">
+     <span class="badge tobuy">to buy</span>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#8</div>
+  <div class="info">
+    <a href="https://www.barnesandnoble.com/s/Unmasking%20AI" class="title" target="_blank">Unmasking AI</a>
+    <div class="author">Dr. Joy Buolamwini</div>
+    <div class="badges">
+     <span class="badge tobuy">to buy</span>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#9</div>
+  <div class="info">
+    <a href="https://www.barnesandnoble.com/w/becoming-an-ai-orchestrator-sadie-st-lawrence/1148336041" class="title" target="_blank">Becoming an AI Orchestrator</a>
+    <div class="author">Sadie St. Lawrence</div>
+    <div class="badges">
+     <span class="badge tobuy">to buy</span>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#10</div>
+  <div class="info">
+    <a href="https://www.barnesandnoble.com/s/Artificial%20Unintelligence" class="title" target="_blank">Artificial Unintelligence</a>
+    <div class="author">Meredith Broussard</div>
+    <div class="badges">
+     <span class="badge tobuy">to buy</span>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#11</div>
+  <div class="info">
+    <a href="https://www.barnesandnoble.com/s/The%20Art%20of%20Uncertainty" class="title" target="_blank">The Art of Uncertainty</a>
+    <div class="author">David Spiegelhalter</div>
+    <div class="badges">
+      <span class="badge owned">owned</span>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#12</div>
+  <div class="info">
+    <a href="https://www.barnesandnoble.com/s/The%20Signal%20and%20the%20Noise" class="title" target="_blank">The Signal and the Noise</a>
+    <div class="author">Nate Silver</div>
+    <div class="badges">
+      <span class="badge owned">owned</span>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#13</div>
+  <div class="info">
+    <a href="https://www.barnesandnoble.com/w/on-the-edge-nate-silver/1144040307" class="title" target="_blank">On the Edge</a>
+    <div class="author">Nate Silver</div>
+    <div class="badges">
+      <span class="badge owned">owned</span>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#14</div>
+  <div class="info">
+    <a href="https://www.barnesandnoble.com/s/How%20to%20Lie%20with%20Statistics" class="title" target="_blank">How to Lie with Statistics</a>
+    <div class="author">Darell Huff</div>
+    <div class="badges">
+     <span class="badge tobuy">to buy</span>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#15</div>
+  <div class="info">
+    <a href="https://www.barnesandnoble.com/s/Storytelling%20with%20Data" class="title" target="_blank">Storytelling with Data</a>
+    <div class="author">Cole Nussbaumer Knaflic</div>
+    <div class="badges">
+     <span class="badge tobuy">to buy</span>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#16</div>
+  <div class="info">
+    <a href="https://www.amazon.com/s?k=People+Skills+for+Analytical+Thinkers" class="title" target="_blank">People Skills for Analytical Thinkers</a>
+    <div class="author">Gilbert Eijkelenboom</div>
+    <div class="badges">
+     <span class="badge tobuy">to buy</span>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#17</div>
+  <div class="info">
+    <a href="https://www.amazon.com/s?k=ColorWise+Kate+Strachnyl" class="title" target="_blank">ColorWise</a>
+    <div class="author">Kate Strachnyl</div>
+    <div class="badges">
+     <span class="badge tobuy">to buy</span>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#18</div>
+  <div class="info">
+    <a href="https://www.barnesandnoble.com/s/Becoming%20a%20Data%20Head" class="title" target="_blank">Becoming a Data Head</a>
+    <div class="author">Gutman &amp; Goldmeier</div>
+    <div class="badges">
+     <span class="badge tobuy">to buy</span>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#19</div>
+  <div class="info">
+    <a href="https://www.barnesandnoble.com/s/Naked%20Statistics" class="title" target="_blank">Naked Statistics</a>
+    <div class="author">Charles Wheelan</div>
+    <div class="badges">
+      <span class="badge tobuy">to buy</span>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#20</div>
+  <div class="info">
+    <a href="https://www.amazon.com/s?k=Superagency+Reid+Hoffman" class="title" target="_blank">Superagency</a>
+    <div class="author">Reid Hoffman &amp; Greg Beato</div>
+    <div class="badges">
+     <span class="badge tobuy">to buy</span>
+    </div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank">#21</div>
+  <div class="info">
+    <a href="https://www.barnesandnoble.com/w/outliers-malcolm-gladwell/1100613264" class="title" target="_blank">Outliers</a>
+    <div class="author">Malcom Gladwell</div>
+    <div class="badges">
+     <span class="badge tobuy">to buy</span>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+<div class="section-label">Currently reading</div>
+
+<div class="book">
+  <div class="rank" style="color:var(--rank-color)">—</div>
+  <div class="info">
+    <a href="https://www.amazon.com/s?k=AI+Engineering+Chip+Huyen" class="title" target="_blank">AI Engineering</a>
+    <div class="author">Chip Huyen</div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank" style="color:var(--rank-color)">—</div>
+  <div class="info">
+    <a href="https://www.barnesandnoble.com/s/The%20Coming%20Wave%20Mustafa%20Suleyman" class="title" target="_blank">The Coming Wave</a>
+    <div class="author">Mustafa Suleyman &amp; Michael Bhaskar</div>
+  </div>
+</div>
+
+<hr class="divider">
+<div class="section-label">Have read</div>
+
+<div class="book">
+  <div class="rank done">✓</div>
+  <div class="info">
+    <a href="https://www.amazon.com/s?k=Designing+Machine+Learning+Systems+Chip+Huyen" class="title" target="_blank">Designing Machine Learning Systems</a>
+    <div class="author">Chip Huyen</div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank done">✓</div>
+  <div class="info">
+    <a href="https://www.barnesandnoble.com/s/Why%20Machines%20Learn%20Anil%20Ananthaswamy" class="title" target="_blank">Why Machines Learn</a>
+    <div class="author">Anil Ananthaswamy</div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank done">✓</div>
+  <div class="info">
+    <a href="https://www.barnesandnoble.com/s/Weapons%20of%20Math%20Destruction" class="title" target="_blank">Weapons of Math Destruction</a>
+    <div class="author">Cathy O'Neil</div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank done">✓</div>
+  <div class="info">
+    <a href="https://www.barnesandnoble.com/s/The%20Art%20of%20Statistics" class="title" target="_blank">The Art of Statistics</a>
+    <div class="author">David Spiegelhalter</div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank done">✓</div>
+  <div class="info">
+    <a href="https://www.barnesandnoble.com/s/How%20Charts%20Lie" class="title" target="_blank">How Charts Lie</a>
+    <div class="author">Alberto Cairo</div>
+  </div>
+</div>
+
+<div class="book">
+  <div class="rank done">✓</div>
+  <div class="info">
+    <a href="https://www.barnesandnoble.com/s/Humble%20Pi" class="title" target="_blank">Humble Pi</a>
+    <div class="author">Matt Parker</div>
+  </div>
+</div>
+
+  </main>
+  <footer>
+    <small><span id="year"></span> Brandon Miner</small>
+  </footer>
+</div>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
